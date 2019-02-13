@@ -4,7 +4,8 @@ Can we change the role or label of a node to change its purpose? Can I just chan
 ---
 How does it differ between OCP 3 and OCP 4?
 ---
-The ability to change the labels is trivial but I would suggest that editing a resource such as an existing machineset that was create by default should be avoided.  Just becasue you can do it does not mean you want too.  The basic primatives in how and why to create a machineset is well documented in `https://github.com/openshift/training/blob/master/docs/05-infrastructure-nodes.md` how to add a machineset and modify the appropriate labels that will then create a series of nodes to the labels to be applied and thus workloads to be applied to those nodes via the label.
+The days in which we label nodes to move workloads there does not function the same in 4.0. The ability to change the labels is trivial but I would suggest that editing a resource such as an existing machineset that was create by default should be avoided.  Just becasue you can do it does not mean you want too.  The basic primatives in how and why to create a machineset is well documented in `https://github.com/openshift/training/blob/master/docs/05-infrastructure-nodes.md` how to add a machineset and modify the appropriate labels that will then create a series of nodes to the labels to be applied and thus workloads to be applied to those nodes via the label.
+
 
 ---
 Which ones are on private subnets? Which ones are on public subnets and security groups?
@@ -35,11 +36,14 @@ Eng: Everything defaults to private subnets. NAT gateways for egress and routers
 ---
 Can we setup VPC peering?
 ---
+It is not recommended to modify the aws vpc configurations due to how the resources are deployed and controlled by the initial setup and operators within the OCP 4.0 cluster
 
 ---
 Do we want Security groups operators later?
 ---
+Not required in the new deployments, but not having an AWS console to poke around and figure out what exactly is created and why, then we could be shooting in the dark.
 
 ---
 VPN in cluster to database -> Egress IP and internal service -> database
 ---
+This follows the same line of thinking as above.
